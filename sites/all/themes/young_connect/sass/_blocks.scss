@@ -1,0 +1,97 @@
+/**
+ * Header Block
+ */
+#zone-branding { 
+	background: white; 
+	@include box-shadow(rgba(#7d838d, 0.56) 1px 1px 8px 0);
+}
+.block-yc-setup-header-title {
+	height: 43px;
+	color: #a6a4a4;
+	font-size: 18px;
+	font-weight: 500;
+	position: relative;
+	.title-wrapper {
+		text-align: center;
+		line-height: 43px;
+	}
+	.btn-left {
+		position: absolute; top: 5px; left: 0;
+		a {
+		display: block;
+		height: 32px; width: 32px;
+		@include background-size(32px 32px);
+		background-position: center center;
+		background-repeat: no-repeat;		
+		}
+	}
+	.btn-back {
+		a {
+		background-image: url("../img/header-back.png");	
+		}
+	}	
+	.btn-menu {
+		a {
+		background-image: url("../img/header-menu.png");	
+		}
+	}
+	.btn-info {
+		a {
+		background-image: url("../img/header-info.png");	
+		}
+	}
+	.btn-profile {
+		a {
+		background-image: url("../img/header-settings.png");
+		}
+	}
+	.btn-right {
+		position: absolute; top: 5px; right: 0;
+		a {
+		display: block;
+		height: 32px; width: 32px;
+		@include background-size(32px 32px);
+		background-position: center center;
+		background-repeat: no-repeat;
+		}
+	}
+}
+
+/**
+ * SEARCH BLOCK
+ */
+
+#block-views-exp-calendar-page-4 {
+	.views-exposed-widgets {
+		padding: 0; margin: 7px 0; 
+		> div { margin: 0; padding: 0; }
+		#edit-combine-wrapper { 
+			float: left;
+			width: 78%;
+			input[type=text] { background: #FFFFFF; }
+		}
+		.views-submit-button { 
+			float: right;
+			width: 20%;
+			.form-submit {
+				margin: 0;
+				@include border-radius(20px);
+			   font-size: 11px;
+			   font-weight: 400;
+			   height: 29px;
+			   padding: 6px 5px 5px;
+			}
+		}
+	}
+}
+
+/**
+ * Create message block
+ */
+.block-5 {
+	margin: 10px 0;
+	a {
+		display: block;
+		text-align: center;
+	}
+}

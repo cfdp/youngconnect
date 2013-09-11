@@ -1,0 +1,219 @@
+<?php
+
+/**
+ * Implements hook_block_info().
+ */
+function yc_setup_block_info() {
+  $blocks = array();
+  
+  $blocks['header_title'] = array(
+    'info' => t('Header title'),
+  );
+  
+  return $blocks;
+}
+
+/**
+ * TITLE BLOCK
+ *
+ * Implements hook_block_view().
+ */
+function yc_setup_block_view($delta='') {
+  $block = array();
+ 
+  switch($delta) {
+    case 'header_title' :
+      $block['content'] = yc_setup_block_content();
+      $block['status'] = 0;
+    break;
+  }
+ 
+  return $block;
+}
+
+function yc_setup_block_content() {
+
+	$str = "";
+	
+	$back_btn = "<div class='btn-back btn-left'><a href='javascript:history.go(-1)'></a></div>";
+	$menu_btn = "<div class='btn-menu btn-left'>".l("","<front>")."</a></div>";
+	$info_btn = "<div class='btn-info btn-left'>".l("","node/1676")."</div>";
+
+	// BUTTON LEFT
+	switch(arg(0)) {
+	
+		case "forside":
+			$str = $info_btn;
+		break;
+		case "calendar":
+			$str = $back_btn;
+			if(arg(1)=="search") {
+				$str = $back_btn;
+			}
+		break;
+		case "forum":
+			if(arg(1)==null) {
+				$str = $back_btn;
+			}
+			else {
+				$str = $back_btn;
+			}
+		break;
+		default: 
+			if(arg(1)==null || is_numeric(arg(1))) {
+				$str = $back_btn;
+			}
+			else {			
+				$str = $back_btn;
+			}
+		break;
+	}
+		
+	// TITLE
+	$str .= "<div class='title-wrapper'>";
+	
+	switch(arg(0)) {
+		case "forside": 
+			$str .= "Menu";
+		break;
+		case "calendar": 
+			$str .= "Kalender";
+		break;
+		case "forum": 
+			$str .= "Forum";
+		break;
+		case "comment": 
+			$str .= "Tilføj kommentar";
+		break;
+		case "node":
+			if(arg(1)=="add") {
+				$str .= drupal_get_title();
+			}
+			else {
+				$node = node_load(arg(1));	
+				if($node->type=="begivenhed") {
+					if(arg(2)=="edit") {
+						$str .= "Rediger begivenhed";
+					}
+					else {
+						$str .= "Kalender";
+					}
+				}
+				else if($node->type=="forum") {
+					if(arg(2)=="edit") {
+						$str .= "Rediger forumemne";
+					}
+					else {
+						$str .= "Forum";
+					}				
+				}
+				else {
+					$str .= drupal_get_title();		
+				}
+			}
+		break;
+		default:
+			$str .= drupal_get_title();
+		break;
+	}
+	
+	$str .= "</div>";
+	
+	// BUTTON RIGHT
+	global $user;
+	switch(arg(0)) {
+		case "forside":
+			$str .= "<div class='btn-profile btn-right'>".l("","user/".$user->uid."/edit")."</div>";
+		break;
+		default:
+			$str .= "<div class='btn-menu btn-right'>".l("","<front>")."</a></div>"; 
+		break;
+	}
+ 
+	return $str;
+}
+
+/**
+ * implements hook_form_alter
+ */
+function yc_setup_form_alter(&$form, &$form_state, $form_id) {
+	
+	if($form["#form_id"]=="privatemsg_new") {
+		$form["actions"]["submit"]["#value"] = "Send";
+	}
+}
+
+/**
+ * Rules
+ */
+function yc_setup_rules_action_info() {
+  return array(
+    'yc_setup_create_duration' => array(
+      'label' => t('Create a duration from a number of seconds'),
+      'group' => t('Custom'),
+      'parameter' => array(
+        'number_of_seconds' => array(
+          'type' => 'integer',
+          'label' => t('Number of seconds')
+        )
+      ),
+      'provides' => array(
+        'duration' => array(
+          'type' => 'duration',
+          'label' => t("Duration")
+        )
+      )
+    )
+  );
+}
+
+function yc_setup_create_duration($number_of_seconds) {
+  return array(
+    'duration' => $number_of_seconds
+  );
+}
+
+/**
+ * Implements hook_views_pre_render().
+ *
+ * Hook into view rendering process to replace "Anonymous" with the content of
+ * field_anonymous_author field.
+ *
+ */
+function yc_setup_views_pre_render(&$view) {
+
+
+  // consider only the desired advanced_forum_topic_list view
+  // excluding editing mode, to avoid confusion when using Views editor
+  $views = array(
+      'advanced_forum_topic_list',
+      'advanced_forum_active_topics',
+      'advanced_forum_unanswered_topics',
+      'advanced_forum_new_topics',
+  );
+  if($view->editing == 0 && in_array($view->name, $views)) {
+
+    // scan all result rows
+    foreach($view->result as $row) {
+
+      // test if post author is "Anonymous"
+      if($row->users_node_uid == 0) {
+
+        // retrieve anonymous user name from node field field_anonymous_author
+        if(isset($row->_field_data['nid_1']['entity']->{ANONYMOUS_POSTING_FIELD_NAME}['und'][0]['name'])) {
+          $row->users_node_name = check_plain($row->_field_data['nid_1']['entity']->{ANONYMOUS_POSTING_FIELD_NAME}['und'][0]['name']);
+
+          // set last comment name to anonymous user name  if there is no comments
+          if (!$row->node_comment_statistics_comment_count) {
+            $row->node_comment_statistics_last_comment_name = $row->users_node_name;
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+}

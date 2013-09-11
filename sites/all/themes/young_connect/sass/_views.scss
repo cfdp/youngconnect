@@ -1,0 +1,237 @@
+/**
+ * VIEW: VÆRKTØJSKASSE
+ */
+.page-vaerktoejskasse {
+	.region-content {
+		.region-inner {
+			overflow: hidden;
+			@include white-box();
+			padding: 25px 25px 20px;
+			
+			/* Indhold */
+			.view-content {
+				> h3 {
+					font-size: 13px; font-weight: 600; font-family: $font-fam-std; text-transform: uppercase; margin: 10px 0 10px 0;
+				}
+				.views-row {
+					margin-bottom: 10px;
+					padding-bottom: 10px;
+					padding-left: 20px;
+					border-bottom: 1px solid #e2e2e2;
+					.views-field-title { 
+						font-weight: 600;
+						font-size: 12px;
+						a { color: $color-grey; }
+					}
+					.views-field-field-rs-pdf {
+						font-size: 10px;
+					}
+				}
+				.views-row.rs-pdf { 
+					background: url("../img/type-file.png") no-repeat 0 1px;
+					@include background-size(10px 13px);
+				}
+				.views-row.rs-youtube { 
+					background: url("../img/type-video.png") no-repeat 0 1px;
+					@include background-size(11px 11px);				
+				}
+				.views-row.rs-link { 
+					background: url("../img/type-link.png") no-repeat top left;
+					@include background-size(10px 13px);				
+				}
+				.views-row-last { border-bottom: none; }
+			}
+
+			/* Exposed filter */
+			.view-filters {
+				.bef-select-as-links {
+					.form-type-bef-link {
+						float: left;
+						margin-right: 5px; padding-right: 5px;
+						margin-bottom: 7px;
+						border-right: 1px solid $color-grey;
+						a {
+							color: $color-grey;
+							font-size: 12px; line-height: 12px;
+							font-weight: 600;
+						}
+					}
+					.form-type-bef-link.selected {
+						a {
+							color: $color-blue;
+						}
+					}
+					.form-type-bef-link:last-child {
+						border-right: 0;
+					}
+				}			
+			}
+		}
+	}
+}
+
+/**
+ * VIEW: VÆRKTØJSEKASSE SØGNING
+ */
+
+/* Exposed filter */
+.page-vaerktoejskasse {
+
+	#block-views-exp-v-rkt-jskasse-page-1 {
+		margin: 10px 0 0;
+		display: none;
+		.block-inner {
+			@include white-box();
+			padding: 25px 25px 10px;	
+		}
+		form {
+			.views-exposed-form .views-exposed-widget {
+				padding: 0;
+			}
+			#edit-combine-wrapper {
+				float: none;
+				label {
+				font-size: 13px; font-family: $font-fam-std; text-transform: uppercase; margin-bottom: 10px;
+				font-weight: 600;
+				}
+			}
+			#edit-field-rs-category-tid-wrapper {
+				float: left;
+				width: 47%;
+				margin: 10px 6% 15px 0;
+				label { margin-bottom: 5px; font-size: 10px; }
+				.customSelect{ width: 100%; }
+			}
+			#edit-field-rs-type-value-wrapper {
+				float: left;
+				width: 47%;
+				margin: 10px 0;
+				padding: 17px 0 0 0;
+				.customSelect{ width: 100%; }
+			}
+			.views-submit-button {
+				float: left; width: 100%;
+				.form-submit {
+					margin-top: 0;
+					@include btn-grey;
+				}
+			}
+		}
+	}
+	
+	/* Søg her knap  */
+	#block-block-3 {
+		position: relative;
+		margin-bottom: 5px;
+		p { margin-bottom: 0; }
+		#btn-reveal {
+			display: block; 
+			margin: auto;
+		   @include border-bottom-radius(5px);
+		   @include background-image(linear-gradient(#545454, #313131)); 
+		   background-color: $color-grey;
+		   padding: 10px 0;
+		   width: 80px;
+		   color: #FFFFFF;
+		   font-size: 11px; line-height: 11px;
+		   font-weight: 600;
+		   text-transform: uppercase;
+		   font-family: $font-fam-sec;   
+		   text-align: center;
+		}	
+	}
+	
+	/* Tilføj indhold knap */
+	#block-block-4 {
+		position: relative; height: 0;
+		#btn-add-ressource {
+		position: absolute; right: 0; top: -12px;
+		display: block;
+		width: 46px;
+		height: 22px;
+		background: url("../img/btn-add-ressource.png") no-repeat;
+		@include background-size(46px 22px);
+		}
+	}
+	
+}
+
+.page-vaerktoejskasse-soeg {
+	h1#page-title { margin: 0;}
+	.view-id-v_rkt_jskasse.view-display-id-page_1 {
+		.view-header { margin-bottom: 10px; font-size: 9px; font-weight: bold; }
+	}
+	#block-views-exp-v-rkt-jskasse-page-1 {
+		display: block;
+	}
+}
+
+/**
+ * VIEW: KOORDINATORER
+ */
+.view-koordinatorer {
+	.views-row {
+		overflow: hidden;
+		@include white-box();
+		padding: 25px 25px 15px;
+		margin: 0 0 10px 0;	
+		.views-field {
+		}
+		.views-field-picture {
+			float: left;
+			margin: 0 15px 15px 0;
+			img {
+				width: 95px; height: 95px;
+			}
+		}
+		.views-field-field-user-name {
+			font-size: 13px; line-height: 1.1em; font-family: $font-fam-std; text-transform: uppercase; margin-bottom: 10px; font-weight: 600;
+		}
+		.views-field-mail {
+			a {
+				color: $color-yellow;
+			}
+		}
+		.views-field-field-user-phone {
+			margin-bottom: 10px;
+		}
+		.views-field-field-user-address {
+			.country { display: none; }
+		}
+	}
+}
+
+/**
+ * VIEW: MENTOR
+ */
+.view-mentor {
+	.views-row {
+		overflow: hidden;
+		@include white-box();
+		padding: 25px 25px 15px;
+		margin: 0 0 10px 0;	
+		.views-field {
+		}
+		.views-field-picture {
+			float: left;
+			margin: 0 15px 15px 0;
+			img {
+				width: 95px; height: 95px;
+			}
+		}
+		.views-field-field-user-name {
+			font-size: 13px; line-height: 1.1em; font-family: $font-fam-std; text-transform: uppercase; margin-bottom: 10px; font-weight: 600;
+		}
+		.views-field-mail {
+			a {
+				color: $color-blue;
+			}
+		}
+		.views-field-field-user-phone {
+			margin-bottom: 10px;
+		}
+		.views-field-field-user-address {
+			.country { display: none; }
+		}
+	}
+}

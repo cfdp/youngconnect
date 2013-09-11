@@ -1,0 +1,299 @@
+/**
+ * FORUM - Forum List
+ */
+.page-forum {
+	#page-title, .tabs { display: none; }
+	#forum-wrapper {
+		.forum-item {
+			overflow: hidden;
+			@include white-box();
+			margin: 0 0 10px 0;
+			padding: 25px 25px 20px;
+			.forum-name {
+				font-size: 13px;
+				text-transform: uppercase;
+				font-weight: 600;
+				margin-bottom: 10px;
+				float: left; width: 100%;
+				a {
+					color: $color-yellow;
+				}
+			}
+			.forum-number-topics { 
+				float: left; 
+				font-weight: 600; text-transform: uppercase; 
+				border-right: 1px solid $color-grey;
+				margin: 0 5px 0 0;
+				padding: 0 5px 0 0;
+				font-size: 9px;
+			}
+			.forum-number-posts { float: left; font-weight: 600; text-transform: uppercase; font-size: 9px; }
+			.forum-description {
+				margin: 10px 0 15px;
+				float: left; width: 100%;
+			}
+			.goto-forum {
+				float: left; width: 100%;
+				position: relative;
+				.goto-link { 
+					@include btn-yellow();
+					@include border-right-radius(0);
+					float: left;
+					width: 78%;
+				}
+				.add-link {
+					@include btn-yellow();
+					@include border-left-radius(0);
+					float: right;
+					width: 20%;
+					font-size: 16px;
+				}
+			}
+		}
+	}
+}
+
+/**
+ * FORUM - Topic List
+ */
+.view-advanced-forum-topic-list {
+	.view-header {
+			overflow: hidden;
+			@include white-box();
+			margin: 0 0 10px 0;
+			padding: 25px 25px 20px;	
+		.view-header-content {
+			.forum-desc-wrapper {
+				h1 {
+					color: $color-yellow;
+					font-weight: 600;
+				}
+				.forum-number-topics { 
+					float: left; 
+					font-weight: 600; text-transform: uppercase; 
+					border-right: 1px solid $color-grey;
+					margin: 0 5px 0 0;
+					padding: 0 5px 0 0;
+					font-size: 9px;
+				}
+				.forum-number-posts { float: left; font-weight: 600; text-transform: uppercase; font-size: 9px; }
+				.forum-description {
+					margin: 10px 0 15px;
+					float: left; width: 100%;
+				}
+			}
+			.forum-node-create-links {
+				padding: 0;
+				float: none; width: 100%;
+				.forum-add-node {
+					margin: 0; float: none;
+					.af-button-large {
+						@include btn-yellow();
+					}
+				}
+			}
+		}
+	}
+	#forum-topic-list {
+		.topic-row {
+			overflow: hidden;
+			@include white-box();
+			margin: 0 0 10px 0;
+			padding: 25px 25px 20px;	
+			a { color: $color-yellow; }
+			.views-field-title {
+				> div {
+					font-size: 13px;
+					text-transform: uppercase;
+					font-weight: 600;
+					margin-bottom: 10px;
+					float: left; width: 100%;
+					a {
+						color: $color-yellow;
+					}
+				}
+				.username {
+					color: $color-yellow;
+					text-transform: uppercase;
+					font-size: 9px;
+					font-weight: 600;
+					a {
+					  color: $color-yellow;
+					}
+				}
+				span.created {
+					font-size: 9px;
+					font-weight: 600;
+				}
+			}
+			.views-field-comment-count {
+				margin: 10px 0;
+				font-size: 9px; font-weight: 600;
+				text-transform: uppercase;
+				.bubble {
+					color: #FFFFFF;
+					width: 15px; height: 15px;
+					margin: 0 0 0 4px;
+					display: inline-block;
+					text-align: center;
+					background: url("../img/comment-bubble.png") no-repeat;
+					background-position: 0 1px;
+					@include background-size(15px 14px);
+				}
+			}	
+			.views-field-nothing {
+				font-size: 9px; 
+				.last-comment-author {
+					font-weight: 600;
+				}
+				.last-comment-date {
+					em { font-style: normal; }
+				}
+			}
+		}
+	}
+	.view-empty {
+		@include white-box();
+		padding: 25px;
+		margin: 0;
+		p { margin: 0; }
+	}
+}
+
+/**
+ * FORUM - Post
+ */
+.node-type-forum {
+	#page-title { display: none; }
+	.forum-post.top-post {
+		@include white-box();
+		padding: 25px 25px 15px;
+		margin: 0 0 10px 0;
+		#forum-headline h1 { 
+			font-size: 13px;
+			text-transform: uppercase;
+			font-weight: 600;
+			margin-bottom: 10px;
+			float: left; width: 100%;
+			color: $color-yellow;
+		}
+		.author-pane { 
+			color: $color-yellow;
+			text-transform: uppercase;
+			font-size: 9px; line-height: 9px;
+			font-weight: 600;
+			display: inline;
+			border-right: 1px solid $color-grey;
+			margin-right: 5px; padding: 0 5px 0 0;
+			a { color: $color-yellow; }
+      .user-picture { display: none; }
+		}
+		.forum-posted-on { 
+			font-size: 9px; line-height: 9px;
+			font-weight: 600;
+			display: inline;
+			padding: 0; float: none;		
+		}
+		.forum-post-content {
+			margin: 10px 0 0 0;
+		}
+	}
+	
+	#forum-comments {
+		.forum-post {
+			margin: 0 0 10px 15px;		
+			@include white-box();
+			padding: 25px 25px 15px;
+			.author-pane { 
+				font-size: 13px;
+				text-transform: uppercase;
+				font-weight: 600;
+				margin-bottom: 10px;
+				float: left; width: 100%;
+				color: $color-yellow;
+				a { color: $color-yellow; }
+        .user-picture { display: none; }
+			}
+			.forum-posted-on { 
+				font-size: 9px;
+				font-weight: 600;
+				padding: 0; float: none;		
+			}
+			.forum-post-content {
+				margin: 10px 0 0 0;
+			}
+			.forum-in-reply-to a {
+				color: $color-yellow;
+			}
+		}
+		.topic-reply-allowed {
+			display: none;
+		}
+		.indented {
+			margin-left: 15px;
+		}
+	}
+	.forum-post-links {	
+		margin: 10px 0 0 0;
+		ul li { margin: 0 0 5px 5px; }
+		.af-button-small {
+			@include btn-yellow();
+			padding: 10px 15px;
+		}
+	}
+}
+
+/**
+ * FORUM - Comment reply
+ */
+.page-comment-reply {
+	#page-title { display: none; }
+	.forum-post {
+		@include white-box();
+		padding: 25px 25px 15px;
+		margin: 0 0 10px 0;
+		.forum-post-title { 
+			font-size: 13px;
+			text-transform: uppercase;
+			font-weight: 600;
+			margin-bottom: 10px;
+			float: left; width: 100%;
+			color: $color-yellow;
+			padding: 0;
+		}
+		.author-pane { 
+			color: $color-yellow;
+			text-transform: uppercase;
+			font-size: 9px; line-height: 9px;
+			font-weight: 600;
+			display: inline;
+			border-right: 1px solid $color-grey;
+			margin-right: 5px; padding: 0 5px 0 0;
+			a { color: $color-yellow; }
+		}
+		.forum-posted-on { 
+			font-size: 9px; line-height: 9px;
+			font-weight: 600;
+			display: inline;
+			padding: 0; float: none;		
+		}
+		.forum-post-content {
+			margin: 10px 0 0 0;
+		}
+		.forum-post-footer {
+			display: none;
+		}
+	}
+	#comment-form {
+		@include white-box();
+		padding: 15px 25px 15px;
+		margin: 0 0 10px 0;
+		.username {
+			color: $color-yellow;
+		}	
+		.form-submit {
+			@include btn-yellow();	
+			padding: 8px 0;		
+		}
+	}
+}

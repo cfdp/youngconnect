@@ -1,0 +1,376 @@
+@import "base";
+/* This file will hold styles for the mobile version of your website (mobile first). */
+/* This also can include ANY global CSS that applies site-wide. Unless overwritten by a more specific style rule, CSS declarations in global.css will apply site-wide. */
+
+body {
+	background: #dce0e4 url("../img/bg-pattern.png") repeat;
+	@include background-size(321px 480px);
+	font-family: $font-fam-std; font-size: $font-size-std; line-height: $line-height-std;
+	color: $color-grey;
+	-webkit-text-size-adjust: none;
+}
+a { color: $color-blue; text-decoration: none; }
+p { margin-bottom: 10px; }
+h1 { font-size: 13px; font-family: $font-fam-std; text-transform: uppercase; margin-bottom: 10px; font-weight: 600; }
+.tabs {
+  margin-bottom: 5px;
+}
+table {
+  width: 100%;
+  th { text-transform: uppercase; padding: 5px 0; border-bottom: 1px solid #CCCCCC; }
+  tr {}
+  td { width: auto; min-width: auto; padding: 5px 0; }
+}
+
+/**
+ * MAIN SECTIONS
+ */
+.section-header {
+	.region {
+		max-width: 1024px;
+		margin: auto;
+		.region-inner { margin: 0 10px; }
+	}
+	.region-header-first {
+		background: #c9c7c7;
+		overflow: hidden;
+	}
+}
+.section-content {
+	.region, #messages {
+		max-width: 1024px;
+		margin: auto;
+		margin: 10px auto;
+		.region-inner { margin: 0 10px; }
+	}
+	.region-sidebar-first {
+		.region-inner {
+	
+		}
+	}
+	.messages {
+		margin: 0 10px;
+	}
+}
+.section-footer {
+	.region {
+		max-width: 1024px;
+		margin: auto;
+		.region-inner { margin: 0 10px; }
+	}
+	.region-footer-second {
+		.region-inner { margin: 0; }
+	}
+}
+.block {
+	float: left; width: 100%; 
+}
+
+/**
+ * Login Page
+ */
+.page-user.not-logged-in {
+	h1#page-title{ display: none; }
+	.region-content {
+		.region-inner {
+			@include white-box();
+			padding: 15px 30px 15px;
+			margin: 25px 10px 10px;
+			text-align: center;
+			overflow: hidden;
+			p {
+				padding: 0 13px 20px 13px;
+				border-bottom: 1px solid #d0d4d9;
+				margin: 0 0 25px 0;
+			}
+			img {
+				width: 138px; height: 99px;
+				margin-bottom: 25px;
+			}
+			.form-container { 
+				padding: 0 20px; 
+				.form-item { margin-bottom: 10px; margin-top: 0; }
+			}
+		}
+	}
+}
+.page-user-edit { 
+	.region-content {
+		.region-inner {
+			text-align: left;
+		}
+	}
+}
+
+/**
+ * User Profile
+ */
+.page-user {
+/* 	h1#page-title{ display: none; } */
+	.region-content {
+		.region-inner {
+			@include white-box();
+			padding: 15px 30px 15px;
+			margin: 10px 10px 10px;
+			overflow: hidden;
+			p {
+				padding: 0 13px 20px 13px;
+				border-bottom: 1px solid #d0d4d9;
+				margin: 0 0 25px 0;
+			}
+			.user-picture {
+				float: none; margin: 0 0 10px 0;
+				img {
+				width: 95px; height: 95px;
+				}
+			}
+			.form-container { 
+				padding: 0 20px; 
+				.form-item { margin-bottom: 10px; margin-top: 0; }
+			}
+		}
+	}
+}
+
+/**
+ * Main Menu
+ */
+.block-menu-block-1 { margin-bottom:65px; }
+.menu-block-1 {
+	width: 90%; margin: 26px auto 0;
+	li {
+		float: left;
+		width: 50%;
+		text-align: center;
+		margin-bottom: 25px;
+		span {
+		display: block;
+		margin: auto;
+		@include box-shadow(rgba(black, 0.3) 1px 1px 4px 0);
+		width: 108px; height: 108px;
+		@include background-size(108px 108px);
+		background-position: center center;
+		background-repeat: no-repeat;
+		}
+		a {
+			display: block;
+			width: 108px; height: 108px;
+			color: #FFFFFF;
+			font-size: 13px; line-height: 156px;
+			font-weight: 500;
+			text-align: center;
+			@include text-shadow(rgba(black, 0.3) 1px 1px 0);
+		}	
+	}
+	li.menu-calendar span { 
+		background-image: url("../img/menu-bg-blue.png");
+		background-color: $color-blue;
+	}
+	li.menu-messages {
+		position: relative;
+		top: 65px;
+		span {
+		background-image: url("../img/menu-bg-green.png");
+		background-color: $color-green;	
+		}
+	}
+	li.menu-help span { 
+		background-image: url("../img/menu-bg-yellow.png");
+		background-color: $color-yellow;	
+	}
+	li.menu-toolbox { 
+		position: relative;
+		top: 65px;		
+		span {
+		background-image: url("../img/menu-bg-black.png");
+		background-color: $color-grey;	
+		}
+	}
+}
+#cyberhus-wrapper {
+	overflow: hidden; text-align: center;
+	#cyberhus-logo {
+		width: 126px;
+		height: 40px;
+	}
+}
+
+/**
+ * MESSAGES
+ */
+.page-messages {
+	h1 { display: none; }
+	/* .tabs { display: none; } */
+	.form-item-operation { display: none; }
+  	#privatemsg-list {
+      @include white-box();
+      padding: 15px 15px 15px 15px;	    
+      table {
+        tr.odd, tr.even {
+          background-color: #FFF; border-bottom: 0;
+        }
+        td { min-width: auto !important; }
+      }
+	}
+}
+
+.page-messages-view {
+	padding-bottom: 50px;
+	.tabs { display: none; }
+	.privatemsg-message-participants { 
+	 padding-bottom: 10px; margin: 0 0 10px 0;
+	 border-bottom: 1px solid #AAA;
+	}
+	.privatemsg-message {
+		margin-bottom: 15px;
+		.privatemsg-message-column {
+			width: auto;
+			float: left;
+			@include white-box();
+			padding: 10px 15px 5px 15px;
+			margin: 0 10px;
+			max-width: 75%;
+			min-width: 50%;
+			word-wrap: break-word;
+			overflow: hidden;
+			.privatemsg-message-information {
+				border: none;
+				margin: 0 0 0 0;
+				position: relative;
+				.privatemsg-author-name { 
+					text-transform: uppercase; 
+					padding: 0;	
+				}
+				.privatemsg-message-date {
+					padding: 0; 
+					color: $color-grey; 
+				}
+			}
+			.privatemsg-message-body {
+				margin: 0 0 0 0;
+				font-weight: 300;
+				p {
+					margin-bottom: 5px;
+				}
+			}
+			.privatemsg-message-actions {
+				a {
+					position: absolute; top: 0; right: 0;
+					text-transform: uppercase;
+					font-size: 9px; font-weight: bold;
+				}
+			}
+			span.privatemsg-message-new { margin-right: 30px; }
+		}
+	}
+	.privatemsg-message.you { 
+		.privatemsg-message-column {
+			width: auto;
+			float: right;
+			background-color: $color-green;
+			color: #FFFFFF;
+			.privatemsg-message-information {
+				.privatemsg-message-date {
+					color: #FFFFFF; 
+					font-weight: 300;
+				}
+			}
+			.privatemsg-message-actions {
+				a {
+					color: #FFFFFF;
+				}
+			}
+		}
+	}
+	.privatemsg-message.not_you {
+	
+	}
+	
+	/* Form */
+	#privatemsg-new {
+		width: 100%; float: left;
+		background-color: #c9c7c7;
+		overflow: hidden;
+		position: fixed; bottom: 0; left: 0;	
+		@include box-shadow(rgba(#7d838d, 1) 1px 1px 5px 0);	
+		> div {
+		padding: 7px 5px;
+		overflow: hidden;
+		}
+		h2, label, #edit-token, #edit-body-format { display: none; }
+		.text-format-wrapper {
+			float: left;
+			width: 78%;
+			textarea {
+				height: 29px;
+			}
+		}
+		#edit-actions {
+			float: right;
+			width: 20%;
+			margin: 0;
+			#edit-submit {
+				@include border-radius(10px);
+				@include background-image(linear-gradient(#5ca21c, #4f8919)); 
+				background-color: $color-green;
+				padding: 5px 5px 5px 5px;
+				color: #FFFFFF;
+				font-size: 11px;
+				font-weight: 400;
+				height: 29px;
+			}
+			#edit-cancel {
+				display: none;
+			}
+		}
+	}
+}
+
+.page-messages-delete {
+	#privatemsg-delete {
+		@include white-box();
+   	padding: 15px 15px 5px 15px;	
+   	text-align: center;
+   	#edit-submit {
+   		margin: 8px 0;
+   	}
+   }
+}
+
+/**
+ * USER PROFILE
+ */
+.page-user {
+	.profile {
+		margin: 0;
+		.field {
+			margin: 0 0 10px 0;
+		}
+	}
+}
+
+/**
+ * ABSOLUTE MESSAGES
+ */
+.absolute-messages-message {
+	font-size: 13px;
+}
+.absolute-messages-status {
+    background-color: #A4C639;
+    border-bottom: 1px solid #849B3A;
+    color: #546B0A;
+}
+.absolute-messages-error {
+    background-color: #EF393C;
+    border-bottom: 1px solid #A30000;
+    color: #770000;
+}
+.absolute-messages-warning {
+    background-color: #F4A83D;
+    border-bottom: 1px solid #D6800C;
+    color: #735005;
+}
+#absolute-messages-show {
+	border-color: transparent $color-blue;
+	box-shadow: none;
+}
