@@ -1,4 +1,5 @@
-Youngconnect web app
+Youngconnect
 ============
 
-A Drupal mobile web app: Forum, private messages &amp; etc.
+A mobile web app based on Drupal.
+Contains: Forum, private messages &amp; etc.
